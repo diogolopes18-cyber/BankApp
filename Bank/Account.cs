@@ -20,27 +20,52 @@ namespace Bank
     {
         //
         public string username { get; set; }
-        private double balance { get; set; }
-        public double Balance
-        {
-            get { return balance; }
-            set { balance = value; }
-        }
+        public double Balance { get; set; }
 
-        public void BankAccountDetails(string username, double balance)
+        public void BankAccountDetails(string username, double Balance)
         {
-            this.balance = Balance;
+            this.Balance = Balance;
             this.username = username;
 
-            Console.WriteLine("Hello {0}, here' your balance: {1}", username, balance);
+            Console.WriteLine("Hello {0}, here' your balance: {1}", username, Balance);
             MenuChoice();
         }
 
-        public static int MenuChoice()
+        public void MenuChoice()
         {
-            return 0;
+            Console.Write("Choose your menu:\n1 - Deposit\n2 - Withdraw\n3 - Deposit History\n");
+            string menuChoice = Console.ReadLine();
+            int choice = Convert.ToInt32(menuChoice);
+
+            switch(choice)
+            {
+                case 1:
+                    Deposit();
+                    break;
+
+                case 2:
+                    //Withdraw();
+                    break;
+            }
         }
 
+        public void Deposit()
+        {
+            double balance = this.Balance;
+            Console.WriteLine("Please insert the amount to deposit: \n");
+            string depositAmount = Console.ReadLine();
+            double amount = Convert.ToInt32(depositAmount);
 
+            if(amount > 0)
+            {
+                balance += amount;
+            }
+
+            Console.Write("Current balance: {0}", balance);
+        }
+
+            
     }
+
+
 }
