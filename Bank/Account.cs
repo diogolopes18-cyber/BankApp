@@ -4,9 +4,9 @@ namespace Bank
 {
     public class Account
     {
-        public static void Main()
+        public static void Details()
         {
-            string username = null;
+            string username = "";
             Console.WriteLine("Welcome to the bank, please enter your username: ");
             username = Console.ReadLine();
 
