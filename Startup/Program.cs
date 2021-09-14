@@ -5,6 +5,6 @@ namespace Startup
 {
     class Program
     {
-        static void Main() => Account.Main();
+        static void Main() => Account.Details();
     }
 }
