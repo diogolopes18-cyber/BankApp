@@ -67,7 +67,7 @@ namespace Bank
         public void Withdraw()
         {
             double balance = this.Balance;
-            Console.WriteLine("Please insert the amount to deposit: \n");
+            Console.WriteLine("Please insert the amount to withdraw: \n");
             string depositAmount = Console.ReadLine();
             double amount = Convert.ToInt32(depositAmount);
 
