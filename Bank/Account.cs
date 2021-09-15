@@ -44,7 +44,7 @@ namespace Bank
                     break;
 
                 case 2:
-                    //Withdraw();
+                    Withdraw();
                     break;
             }
         }
@@ -64,7 +64,21 @@ namespace Bank
             Console.Write("Current balance: {0}", balance);
         }
 
-            
+        public void Withdraw()
+        {
+            double balance = this.Balance;
+            Console.WriteLine("Please insert the amount to deposit: \n");
+            string depositAmount = Console.ReadLine();
+            double amount = Convert.ToInt32(depositAmount);
+
+            if (amount > 0)
+            {
+                balance -= amount;
+            }
+
+            Console.Write("Current balance: {0}", balance);
+        }
+
     }
 
 
