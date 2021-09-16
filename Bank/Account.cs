@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Bank
 {
@@ -21,6 +22,8 @@ namespace Bank
         //
         public string username { get; set; }
         public double Balance { get; set; }
+        //List to store bank transactions history
+        List<double> depositHistory = new List<double>();
 
         public void BankAccountDetails(string username, double Balance)
         {
@@ -33,6 +36,7 @@ namespace Bank
 
         public void MenuChoice()
         {
+
             Console.Write("Choose your menu:\n1 - Deposit\n2 - Withdraw\n3 - Deposit History\n");
             string menuChoice = Console.ReadLine();
             int choice = Convert.ToInt32(menuChoice);
@@ -46,6 +50,10 @@ namespace Bank
                 case 2:
                     Withdraw();
                     break;
+
+                case 3:
+                    History();
+                    break;
             }
         }
 
@@ -56,12 +64,15 @@ namespace Bank
             string depositAmount = Console.ReadLine();
             double amount = Convert.ToInt32(depositAmount);
 
+            depositHistory.Add(amount);
+
             if(amount > 0)
             {
                 balance += amount;
             }
 
             Console.Write("Current balance: {0}", balance);
+            MenuChoice();
         }
 
         public void Withdraw()
@@ -71,12 +82,29 @@ namespace Bank
             string depositAmount = Console.ReadLine();
             double amount = Convert.ToInt32(depositAmount);
 
+            depositHistory.Add(-amount);
+
             if (amount > 0)
             {
                 balance -= amount;
             }
 
             Console.Write("Current balance: {0}", balance);
+            MenuChoice();
+        }
+
+        public void History()
+        {
+            Console.WriteLine("Here's your deposit history:");
+            foreach(double mov in depositHistory)
+            {
+                if (mov > 0)
+                    Console.WriteLine("Deposit: " + mov);
+                else
+                    Console.WriteLine("Withdraw: " + mov);
+            }
+
+            MenuChoice();
         }
 
     }
