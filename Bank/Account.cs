@@ -37,7 +37,7 @@ namespace Bank
         public void MenuChoice()
         {
 
-            Console.Write("Choose your menu:\n1 - Deposit\n2 - Withdraw\n3 - Deposit History\n");
+            Console.Write("Choose your menu:\n1 - Deposit\n2 - Withdraw\n3 - Deposit History\n4 - Write name to file");
             string menuChoice = Console.ReadLine();
             int choice = Convert.ToInt32(menuChoice);
 
@@ -53,6 +53,10 @@ namespace Bank
 
                 case 3:
                     History();
+                    break;
+
+                case 4:
+                    FileWrite();
                     break;
             }
         }
@@ -107,7 +111,11 @@ namespace Bank
             MenuChoice();
         }
 
+        public void FileWrite()
+        {
+            FileHandling write = new FileHandling();
+            write.SaveHistoryToFile(this.username);
+        }
+
     }
-
-
 }
