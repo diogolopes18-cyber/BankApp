@@ -5,6 +5,10 @@ namespace Startup
 {
     class Program
     {
-        static void Main() => Account.Details();
+        static void Main()
+        {
+            StoreClientInfo.Main();
+            Account.Details(); 
+        }
     }
 }
