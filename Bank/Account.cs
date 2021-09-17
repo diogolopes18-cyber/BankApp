@@ -5,6 +5,11 @@ namespace Bank
 {
     public class Account
     {
+
+        public void HelloCustomer()
+        {
+            Console.WriteLine("This is a method to illustrate class inheritance");
+        }
         public static void Details()
         {
             string username = "";
@@ -30,6 +35,11 @@ namespace Bank
             this.Balance = Balance;
             this.username = username;
 
+
+            //Notice that it wasn't necessary to create a new instance of the class Account in order to
+            //make a call to the method, since OpenAccount inherites all methods of Account
+
+            HelloCustomer();
             Console.WriteLine("Hello {0}, here' your balance: {1}", username, Balance);
             MenuChoice();
         }
