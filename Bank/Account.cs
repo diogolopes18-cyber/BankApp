@@ -12,7 +12,7 @@ namespace Bank
         }
         public static void Details()
         {
-            string username = "";
+            string username;
             Console.WriteLine("Welcome to the bank, please enter your username: ");
             username = Console.ReadLine();
 
