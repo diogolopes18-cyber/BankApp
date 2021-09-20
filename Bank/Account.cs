@@ -10,7 +10,7 @@ namespace Bank
         {
             Console.WriteLine("This is a method to illustrate class inheritance");
         }
-        public static void Details()
+        public static string Details()
         {
             string username;
             Console.WriteLine("Welcome to the bank, please enter your username: ");
@@ -19,6 +19,8 @@ namespace Bank
             //Create new account with username data
             OpenAccount newAccount = new OpenAccount();
             newAccount.BankAccountDetails(username, 300);
+
+            return username;
         }
     }
 

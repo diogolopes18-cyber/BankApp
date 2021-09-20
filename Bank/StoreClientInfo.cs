@@ -15,7 +15,7 @@ namespace Bank
 
             //The second parameter will be a object of class PersonInformation which formats the document inside the 
             //users collection as we define it
-            db.InsertData("Users", new PersonInformation { FirstName = "John", Age = 30});
+            db.InsertData("Users", new PersonInformation { FirstName = OpenAccount.Details(), Age = 30});
         }
     }
 
