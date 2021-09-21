@@ -8,7 +8,7 @@ namespace Startup
         static void Main()
         {
             StoreClientInfo.Main();
-            Account.Details(); 
+            Account.Details();
         }
     }
 }
