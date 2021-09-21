@@ -8,12 +8,12 @@ namespace Bank
 
         public void HelloCustomer()
         {
-            Console.WriteLine("This is a method to illustrate class inheritance");
+            Console.WriteLine("This is a method to illustrate class inheritance\n");
         }
         public static string Details()
         {
             string username;
-            Console.WriteLine("Welcome to the bank, please enter your username: ");
+            Console.WriteLine("Welcome to the bank, please enter your username: \n");
             username = Console.ReadLine();
 
             //Create new account with username data
@@ -42,14 +42,14 @@ namespace Bank
             //make a call to the method, since OpenAccount inherites all methods of Account
 
             HelloCustomer();
-            Console.WriteLine("Hello {0}, here' your balance: {1}", username, Balance);
+            Console.WriteLine("Hello {0}, here' your balance: {1}\n", username, Balance);
             MenuChoice();
         }
 
         public void MenuChoice()
         {
 
-            Console.Write("Choose your menu:\n1 - Deposit\n2 - Withdraw\n3 - Deposit History\n4 - Write name to file");
+            Console.Write("Choose your menu:\n1 - Deposit\n2 - Withdraw\n3 - Deposit History\n4 - Write name to file\n5 - Open a loan\n");
             string menuChoice = Console.ReadLine();
             int choice = Convert.ToInt32(menuChoice);
 
@@ -69,6 +69,10 @@ namespace Bank
 
                 case 4:
                     FileWrite();
+                    break;
+
+                case 5:
+                    GetLoan();
                     break;
             }
         }
@@ -129,5 +133,44 @@ namespace Bank
             write.SaveHistoryToFile(this.username);
         }
 
+
+        public void GetLoan()
+        {
+            Console.WriteLine("What would be the opening amount for your loan?\n");
+            double amount = Convert.ToDouble(Console.ReadLine());
+            
+
+            Console.WriteLine("What should be your loan tax?\n");
+            double tax = Convert.ToDouble(Console.ReadLine());
+
+            if (tax < 1)
+                Console.Error.WriteLine("The loan tax should be greater than 1.0%\n");
+            else
+            {
+                //Open new loan
+                Loan myLoan = new Loan(amount, tax);
+                double finalLoanResult = myLoan.AssertLoanAmount();
+                Console.WriteLine("Here's the bank loan value {0}\n", finalLoanResult);
+            }
+        }
+    }
+
+    public class Loan
+    {
+        private double LoanAmmount { get; set; }
+        private double LoanTax { get; set; }
+
+        //Class constructor
+        public Loan(double loan, double tax)
+        {
+            this.LoanAmmount = loan;
+            this.LoanTax = tax;
+        }
+
+        public double AssertLoanAmount()
+        {
+            double formulaResult = this.LoanAmmount * this.LoanTax - (0.20 * this.LoanAmmount);
+            return formulaResult;
+        }
     }
 }
